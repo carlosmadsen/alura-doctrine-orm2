@@ -1,4 +1,4 @@
-# alura-doctrine-orm
+# alura-doctrine-orm2
 ## Descrição do Projeto:
 Exercícios do curso de Doctrine conhecendo um ORM PHP da Alura
 ## Requisitos:
@@ -11,7 +11,7 @@ git clone https://github.com/carlosmadsen/alura-doctrine-orm2.git
 cd alura-doctrine-orm2
 composer install
 ```
-Listando os comendos do doctrine.
+Listando os comandos do doctrine.
 ```
 php .\bin\doctrine.php 
 ```
