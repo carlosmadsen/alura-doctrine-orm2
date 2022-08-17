@@ -13,29 +13,50 @@ composer install
 ```
 Listando os comandos do doctrine.
 ```
-php .\bin\doctrine.php 
+php .\commands\doctrine.php 
 ```
-Criação do banco de dados sqlite (no windows).
+Criação do banco de dados sqlite.
 ```
-php .\bin\doctrine.php orm:schema-tool:create
+php .\commands\doctrine.php orm:schema-tool:create
+```
+Atualização do banco de dados de acordo com as entidades.
+```
+php .\commands\doctrine.php orm:schema-tool:update
 ```
 Verificação se as entidades foram criadas corretamente.
 ```
-php .\bin\doctrine.php orm:validate-schema
+php .\commands\doctrine.php orm:validate-schema
 ```
 Listando as entidades que estão mapeadas.
 ```
-php .\bin\doctrine.php orm:info
+php .\commands\doctrine.php orm:info
 ```
 Apresentando informações de uma entidade, no caso a entidade "Aluno".
 ```
-php .\bin\doctrine.php orm:mapping:describe Aluno 
+php .\commands\doctrine.php orm:mapping:describe Aluno 
 ```
 Rodando SQL.
 ```
-php .\bin\doctrine.php dbal:run-sql "select * from Aluno";
+php .\commands\doctrine.php dbal:run-sql "select * from Aluno";
 ```
 Rodando DQL.
 ```
-php .\bin\doctrine.php orm:run-dql "select a from Alura\Doctrine\Entity\Aluno a";
+php .\commands\doctrine.php orm:run-dql "select a from Alura\Doctrine\Entity\Aluno a";
+```
+## Comandos:
+Inserindo aluno com telefone.
+```
+php .\commands\insere-aluno.php "Carlos" "(53) 91844-5566"
+```
+Listando alunos.
+```
+php .\commands\lista-alunos.php
+```
+Adicionando telefone para um aluno.
+```
+php .\commands\adiciona-telefone.php 1 "(53) 3233-5544"
+```
+Removendo aluno.
+```
+php .\commands\remove-aluno.php 1
 ```

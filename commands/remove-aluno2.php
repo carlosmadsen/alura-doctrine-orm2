@@ -12,6 +12,7 @@ try {
 	}
 	$entityManager = EntityManagerCreator::createEntityManager();
 
+	//cuidado não vai remover os telefones em cascata!
 	//o getPartialReference é mais eficiente do que o find, porque não faz select e só preeche o id. 
 	$aluno = $entityManager->getPartialReference(Aluno::class, $id);
 	if (is_null($aluno)) {
