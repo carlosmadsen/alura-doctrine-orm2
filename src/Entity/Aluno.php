@@ -6,6 +6,7 @@ use Doctrine\ORM\Mapping\Id;
 use Doctrine\ORM\Mapping\Column;
 use Doctrine\ORM\Mapping\Entity;
 use Doctrine\ORM\Mapping\OneToMany;
+use Doctrine\ORM\Mapping\ManyToMany;
 use Doctrine\ORM\Mapping\GeneratedValue;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Collections\ArrayCollection;
@@ -21,12 +22,15 @@ class Aluno {
 	)
 	]
 	private Collection $telefones;
+	#[ManyToMany(targetEntity: 'Curso', cascade: ['all'], inversedBy: 'alunos')]
+	private Collection $cursos;
 
 	public function __construct(
 		#[Column]
 		private string $nome
 	) {
 		$this->telefones = new ArrayCollection();
+		$this->cursos = new ArrayCollection();
 	}
 
 	public function getId(): int {
@@ -48,5 +52,16 @@ class Aluno {
 
 	public function getTelefones(): iterable {
 		return $this->telefones;
+	}	
+
+	public function addCurso(Curso $c) {
+		if (!$this->cursos->contains($c)) {
+			$this->cursos->add($c);
+			$c->addAluno($this);
+		}
+	}
+
+	public function getCursos(): iterable {
+		return $this->cursos;
 	}
 }
